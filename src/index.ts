@@ -1,6 +1,7 @@
 import express from 'express';
 import { database } from './database/connection';
 import { areaRoutes } from './routes/areaRoutes';
+import { processRoutes } from './routes/processRoutes';
 
 const app = express();
 
@@ -11,6 +12,8 @@ const startServer = async () => {
     await database.connect();
 
     app.use('/areas', areaRoutes);
+
+    app.use('/processes', processRoutes);
   } catch (error) {
     console.error("Error starting the server: ", error);
     process.exit(1);
