@@ -17,6 +17,11 @@ const startServer = async () => {
     app.use('/processes', processRoutes);
 
     app.use('/subProcesses', subProcessRoutes);
+
+    app.listen('3000', () => {
+      console.log('Server running on 3000');
+    })
+
   } catch (error) {
     console.error("Error starting the server: ", error);
     process.exit(1);
