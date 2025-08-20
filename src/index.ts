@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import { database } from './database/connection';
 import { areaRoutes } from './routes/areaRoutes';
 import { processRoutes } from './routes/processRoutes';
@@ -6,6 +7,22 @@ import { subProcessRoutes } from './routes/subProcessRoutes';
 
 const app = express();
 const port = process.env.PORT || 3000
+
+const corsOptions = {
+  origin: ['http://localhost:5173'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: [
+    'Origin',
+    'X-Requested-With',
+    'Content-Type',
+    'Accept',
+    'Authorization',
+    'Cache-Control'
+  ],
+  credentials: true
+}
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 const startServer = async () => {
