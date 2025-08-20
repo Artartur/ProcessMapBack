@@ -5,7 +5,7 @@ import { processRoutes } from './routes/processRoutes';
 import { subProcessRoutes } from './routes/subProcessRoutes';
 
 const app = express();
-
+const port = process.env.PORT || 3000
 app.use(express.json());
 
 const startServer = async () => {
@@ -18,8 +18,8 @@ const startServer = async () => {
 
     app.use('/subProcesses', subProcessRoutes);
 
-    app.listen('3000', () => {
-      console.log('Server running on 3000');
+    app.listen(port, () => {
+      console.log(`Server running on ${port}`);
     })
 
   } catch (error) {
